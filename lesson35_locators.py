@@ -15,10 +15,14 @@ driver.find_element(By.ID, 'exampleCheck1').click()
 # Creating an Xpath -> //tagname[@attribute='value']
 # Creating an CSSSelector -> tagname[attribute='value']
 driver.find_element(
-    By.CSS_SELECTOR, "input[name='name']").send_keys('Vinicius')
+    By.XPATH, '(//input[@name="name"])[1]').send_keys('Vinicius')
 driver.find_element(By.XPATH, "//input[@type='submit']").click()
+driver.find_element(By.CSS_SELECTOR, '#inlineRadio1').click()
 message = driver.find_element(By.CLASS_NAME, 'alert-success').text
 print(message)
+
+driver.find_element(
+    By.XPATH, '(//input[@name="name"])[2]').clear()
 
 assert 'Success' in message
 
