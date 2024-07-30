@@ -37,3 +37,15 @@ wait = WebDriverWait(driver, 10)
 wait.until(expected_conditions.presence_of_element_located(
     (By.CSS_SELECTOR, '.promoInfo')))
 print(driver.find_element(By.CSS_SELECTOR, '.promoInfo').text)
+
+# Total sum check
+
+prices = driver.find_elements(By.XPATH, '//tr/td[5]/p')
+
+total_sum = 0
+for price in prices:
+    total_sum += int(price.text)
+
+total = int(driver.find_element(By.CSS_SELECTOR, '.totAmt').text)
+
+assert total == total_sum
