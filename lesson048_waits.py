@@ -20,8 +20,17 @@ items = driver.find_elements(By.XPATH, '//div[@class="products"]/div')
 count_items = len(items)
 assert count_items > 0
 
+products_names_list = []
 for item in items:
+    products_names_list.append(item.find_element(By.XPATH, 'h4').text)
     item.find_element(By.XPATH, 'div/button').click()
+
+expected_names_list = [
+    'Cucumber - 1 Kg',
+    'Raspberry - 1/4 Kg',
+    'Strawberry - 1/4 Kg'
+]
+assert products_names_list == expected_names_list
 
 driver.find_element(By.CSS_SELECTOR, '.cart-icon').click()
 driver.find_element(By.XPATH, '//button[text()="PROCEED TO CHECKOUT"]').click()
@@ -49,3 +58,7 @@ for price in prices:
 total = int(driver.find_element(By.CSS_SELECTOR, '.totAmt').text)
 
 assert total == total_sum
+
+discounted_total = float(driver.find_element(
+    By.CSS_SELECTOR, '.discountAmt').text)
+assert total > discounted_total
