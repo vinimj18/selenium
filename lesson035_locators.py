@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
 driver.get('https://rahulshettyacademy.com/angularpractice/')
 
-# Locators adentified by Selenium:
+# Locators identified by Selenium:
 # Id, name, classname, Xpath, CSSSelector, linkText
 
 driver.find_element(By.NAME, 'email').send_keys('vinimj_lixo18@gmail.com')
