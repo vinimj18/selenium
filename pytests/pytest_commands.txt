@@ -70,3 +70,31 @@ Fixtures:
     of all the tests in the class instead of each test, just change the fixture
     scope by addin the following argument to the decorator:
         @pytest.fixture(scope='class')
+
+    When your fixture method return something, that something must be passed as 
+    a parameter to the test function:
+        @pytest.fixture()
+        def data_load():
+            print('Data is being retrieved')
+            return ['Vinicius', 'Justen', 'vinimj.lixo18@gmail.com']
+
+        @pytest.mark.usefixtures('data_load')
+        class TestData():
+            def test_edit_profile(self, data_load):
+                print(data_load[0])
+
+    You can run a single test with multiple parameter. Just add those parameters
+    to the fixture:
+
+        @pytest.fixture(params=['Chrome', 'Firefox', 'IE'])
+        def cross_browser(request):
+            return request.param
+
+    The test will run as many times as the amount of parameters provided. In the
+    example above, it will run 3 times. One for each browser in the list of parameters.
+
+HTML Reports
+
+    pip install pytest-html
+
+    Just add another parser when running the tests  --html=report.html

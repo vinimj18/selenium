@@ -1,7 +1,7 @@
 import pytest
 
 
-@pytest.mark.smoke
+# @pytest.mark.smoke
 def test_say_hello():
     print("Hello")
 
