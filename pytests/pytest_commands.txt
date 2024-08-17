@@ -31,7 +31,8 @@ xfail:
     It will run the test but it will no show on the report.
 
 Fixtures:
-    Are steps that are not tests but are required to setup the tests.
+    Are steps that are not tests but are required to be executed before or after
+    the tests.
         @pytest.fixture()
         def setup():
 
@@ -39,6 +40,33 @@ Fixtures:
         def test_fixture_demo(setup)
 
     This will make the fixture to be run before the test.
+    You can also add an yield command to have steps run after the tests
+        @pytest.fixture()
+        def setup():
+            print('this will run before the tests')
+            yield
+            print('this will run after the tests')
 
+    Some fixtures will be used in more than one file. In this case you can write
+    all the fixtures in a file called conftest.py and pytest will automatically
+    retrieve the fixtures from that file, making it available to all test cases.
 
+    In case you have many tests that use the same fixture in the same test case
+    you can optimize the code by wrapping all tests inside a class and decorating
+    it with @pytest.mark.usefixtures("FIXTURE_NAME"):
 
+        @pytest.mark.usefixtures("setup")
+        class TestExecution():
+            def test_fixture_demo1(self):
+                print('I will execute inside the fixture_demo1')
+
+            def test_fixture_demo2(self):
+                print('I will execute inside the fixture_demo2')
+
+            def test_fixture_demo3(self):
+                print('I will execute inside the fixture_demo3')
+
+    In order to make your last portion of the fixture to run after the execution
+    of all the tests in the class instead of each test, just change the fixture
+    scope by addin the following argument to the decorator:
+        @pytest.fixture(scope='class')

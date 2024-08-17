@@ -6,5 +6,5 @@ def test_say_hello():
     print("Hello")
 
 
-def test_say_hi_CreditCard():
+def test_say_hi_CreditCard(setup):
     print("Hi")
