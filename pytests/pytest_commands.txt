@@ -1,0 +1,44 @@
+NAMING:
+    Pytest file names should start with 'test_'
+    Test methods should also start with 'test_'
+
+Run tests in the console:
+    py.test - Run the tests showing how many passed or failed with no other info
+    FILE_NAME - Add the file name to run the tests in that specific file
+    -v - verbose mode, shows more info on the tests
+    -s - shows the final result from each test module
+        Example: py.test test_lesson069_test1.py -v -s
+    
+    -k KEY_WORD - run only tests that have the provided keyword in the method name
+    (Test names must be meaningful to help the use of keyword filters k- parser)
+        Example: py.test -k CreditCard -v -s
+
+DECORATORS:
+
+Marking a test:
+    Add decorator pytest.mark.TAG
+    You can put any tag and then run the marked tests using the -m TAG parser
+        Example: py.test -m smoke -v -s   [ decorator = @pytest.mark.smoke]
+
+Skipping a test:
+    You can skip a test by marking it on the decorator:
+        @pytest.mark.skip
+
+xfail:
+    If you skip a test it will skip the whole action. So if your test has an
+    operation that is necessary to other tests use the decorator mark xfail:
+        @pytest.mark.xfail
+    It will run the test but it will no show on the report.
+
+Fixtures:
+    Are steps that are not tests but are required to setup the tests.
+        @pytest.fixture()
+        def setup():
+
+    Then apply the decorated function to the test argument:
+        def test_fixture_demo(setup)
+
+    This will make the fixture to be run before the test.
+
+
+
