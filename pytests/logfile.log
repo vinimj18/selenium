@@ -1,0 +1,10 @@
+2024-08-18 11:59:30,576: INFO: pytests.test_lesson080_logging: An info statement is printed
+2024-08-18 11:59:30,577: WARNING: pytests.test_lesson080_logging: Something is in warning mode
+2024-08-18 11:59:30,577: ERROR: pytests.test_lesson080_logging: A major error has happened
+2024-08-18 11:59:30,577: CRITICAL: pytests.test_lesson080_logging: Critical issue
+2024-08-18 12:00:59,430: DEBUG: pytests.test_lesson080_logging: A debug statement is printed
+2024-08-18 12:00:59,431: INFO: pytests.test_lesson080_logging: An info statement is printed
+2024-08-18 12:00:59,431: WARNING: pytests.test_lesson080_logging: Something is in warning mode
+2024-08-18 12:00:59,431: ERROR: pytests.test_lesson080_logging: A major error has happened
+2024-08-18 12:00:59,433: CRITICAL: pytests.test_lesson080_logging: Critical issue
+2024-08-18 12:01:46,638: CRITICAL: pytests.test_lesson080_logging: Critical issue
