@@ -1,9 +1,11 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 
+@pytest.mark.usefixtures('setup_browser')
 class TestOne:
 
     def e2e(self):
@@ -12,10 +14,6 @@ class TestOne:
         driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://rahulshettyacademy.com/angularpractice/")
         driver.implicitly_wait(5)
-
-        # Getting a part of the locator
-        # CSS Selector = a[href*="shop"]
-        # XPath = //a[contains(@href, "shop")]
 
         driver.find_element(By.CSS_SELECTOR, 'a[href*="shop"]').click()
         products = driver.find_elements(By.XPATH, '//div[@class="card h-100"]')
