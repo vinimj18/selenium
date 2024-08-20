@@ -5,13 +5,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from utilities.base_class import BaseClass
+from page_objects.home_page import HomePage
 
 
 class TestOne(BaseClass):
     def test_e2e(self):
+
+        home_page = HomePage(self.driver)
         self.driver.implicitly_wait(5)
 
-        self.driver.find_element(By.CSS_SELECTOR, 'a[href*="shop"]').click()
+        home_page.shop_items().click()
+        # self.driver.find_element(By.CSS_SELECTOR, 'a[href*="shop"]').click()
         products = self.driver.find_elements(
             By.XPATH, '//div[@class="card h-100"]')
 
